@@ -13,11 +13,15 @@ gem 'unicorn'
 # API versioning
 gem 'versionist'
 
+# Secure passwords
+gem 'bcrypt'
+
 # Testing
 group :test, :development do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
-  gem 'shoulda-matchers'
+  gem 'spring-commands-rspec'
+  gem 'shoulda-matchers', require: false
 end
 
 group :development do

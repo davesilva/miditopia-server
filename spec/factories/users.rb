@@ -1,10 +1,13 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
+  sequence(:email) { |n| "user#{n}@test.com" }
+  sequence(:username) { |n| "test_user#{n}" }
+
   factory :user do
-    email "MyString"
-    username "MyString"
-    login_name "MyString"
-    password_digest "MyString"
+    email
+    username
+    password 'password123'
+    password_confirmation 'password123'
   end
 end

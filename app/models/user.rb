@@ -1,2 +1,11 @@
 class User < ActiveRecord::Base
+  has_secure_password
+
+  validates :password, length: { minimum: 6 }
+  validates :email, presence: true,
+                    uniqueness: true,
+                    format: { with: /\A.*@.*\..*\z/ }
+  validates :username, presence: true
+
+  before_save { email.downcase! }
 end

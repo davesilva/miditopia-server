@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   # Associations
-  it { should have_many :tracks }
+  it { should have_many :uploads }
 
   # Password
   it { should have_secure_password }

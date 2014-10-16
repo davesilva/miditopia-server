@@ -7,6 +7,5 @@ FactoryGirl.define do
   factory :track do
     artist
     title
-    user
   end
 end

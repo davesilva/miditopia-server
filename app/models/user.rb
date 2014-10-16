@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_secure_password
 
+  has_many :tracks
+
   validates :password, length: { minimum: 6 },
                        confirmation: true,
                        allow_blank: true

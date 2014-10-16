@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  # Associations
+  it { should have_many :tracks }
+
   # Password
   it { should have_secure_password }
   it { should ensure_length_of(:password).is_at_least(6) }

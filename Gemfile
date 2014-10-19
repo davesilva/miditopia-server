@@ -13,6 +13,10 @@ gem 'unicorn'
 # API versioning
 gem 'versionist'
 
+# API response views
+gem 'rabl'
+gem 'oj'
+
 # Secure passwords
 gem 'bcrypt'
 

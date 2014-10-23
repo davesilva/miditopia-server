@@ -6,6 +6,7 @@ development:
   username: <%= ENV['USER'] %>
   password:
   min_messages: warning
+  host: localhost
 
 test:
   adapter: postgresql
@@ -15,3 +16,4 @@ test:
   username: <%= ENV['USER'] %>
   password:
   min_messages: warning
+  host: localhost

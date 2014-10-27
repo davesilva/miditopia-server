@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 # Rails
 gem 'rails', '4.2.0.beta2'
 gem 'rails-api'
+gem 'responders', '~> 2.0'
 
 # Postgres Database
 gem 'pg'

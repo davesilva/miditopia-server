@@ -2,6 +2,9 @@ class V1::UsersController < V1::BaseController
   before_action :set_user, only: [:update, :show]
   before_action :authorize, only: [:update, :show]
 
+  def show
+  end
+
   def create
     @user = User.create(user_params)
     respond_with @user
@@ -9,10 +12,6 @@ class V1::UsersController < V1::BaseController
 
   def update
     @user.update(user_params)
-    respond_with @user
-  end
-
-  def show
     respond_with @user
   end
 

@@ -5,29 +5,7 @@ describe V1::TracksController do
   let(:track) { FactoryGirl.create(:track) }
   let(:valid_attributes) { FactoryGirl.attributes_for(:track) }
 
-  context 'logged out' do
-    describe 'GET index' do
-      before { get :index, format: :json }
-
-      it { should respond_with(:unauthorized) }
-    end
-
-    describe 'GET show' do
-      before { get :show, id: track.id, format: :json }
-
-      it { should respond_with(:unauthorized) }
-    end
-
-    describe 'POST create' do
-      before { post :create, track: valid_attributes, format: :json }
-
-      it { should respond_with(:unauthorized) }
-    end
-  end
-
-  context 'logged in' do
-    before { basic_auth(user) }
-
+  shared_examples_for 'index and show' do
     describe 'GET index' do
       before { get :index, format: :json }
 
@@ -40,7 +18,23 @@ describe V1::TracksController do
 
       it { should respond_with(:success) }
       it { should render_template('tracks/show') }
+    end    
+  end
+
+  context 'logged out' do
+    it_behaves_like 'index and show'
+
+    describe 'POST create' do
+      before { post :create, track: valid_attributes, format: :json }
+
+      it { should respond_with(:unauthorized) }
     end
+  end
+
+  context 'logged in' do
+    before { basic_auth(user) }
+
+    it_behaves_like 'index and show'
 
     describe 'POST create' do
       context 'with valid attributes' do

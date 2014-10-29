@@ -8,18 +8,24 @@ describe V1::UploadsController do
     FactoryGirl.attributes_for(:upload).merge(track_id: track.id)
   end
 
-  context 'logged out' do
+  shared_examples_for 'index and show' do
     describe 'GET index' do
       before { get :index, format: :json }
 
-      it { should respond_with(:unauthorized) }
+      it { should respond_with(:success) }
+      it { should render_template('uploads/index') }
     end
 
     describe 'GET show' do
       before { get :show, id: upload.id, format: :json }
 
-      it { should respond_with(:unauthorized) }
-    end
+      it { should respond_with(:success) }
+      it { should render_template('uploads/show') }
+    end    
+  end
+
+  context 'logged out' do
+    it_behaves_like 'index and show'
 
     describe 'POST create' do
       before { post :create, upload: valid_attributes, format: :json }
@@ -31,18 +37,7 @@ describe V1::UploadsController do
   context 'logged in' do
     before { basic_auth(user) }
 
-    describe 'GET index' do
-      before { get :index, format: :json }
-
-      it { should respond_with(:success) }
-    end
-
-    describe 'GET show' do
-      before { get :show, id: upload.id, format: :json }
-
-      it { should respond_with(:success) }
-      it { should render_template('uploads/show') }
-    end
+    it_behaves_like 'index and show'
 
     describe 'POST create' do
       context 'with valid attributes' do

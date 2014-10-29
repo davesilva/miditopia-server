@@ -1,6 +1,6 @@
 class V1::TracksController < V1::BaseController
   before_action :set_track, only: [:show, :update, :delete]
-  before_action :authorize
+  before_action :authorize, except: [:index, :show]
 
   def index
     @tracks = Track.all

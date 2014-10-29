@@ -1,6 +1,6 @@
 class V1::UploadsController < V1::BaseController
   before_action :set_upload, only: [:show, :destroy]
-  before_action :authorize
+  before_action :authorize, except: [:index, :show]
 
   def index
     @uploads = Upload.all

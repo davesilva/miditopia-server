@@ -2,8 +2,11 @@ require 'spec_helper'
 
 describe V1::UploadsController do
   let(:user) { FactoryGirl.create(:user) }
-  let(:upload) { FactoryGirl.create(:upload, user: user) }
-  let(:valid_attributes) { FactoryGirl.attributes_for(:upload) }
+  let(:track) { FactoryGirl.create(:track) }
+  let(:upload) { FactoryGirl.create(:upload, user: user, track: track) }
+  let(:valid_attributes) do
+    FactoryGirl.attributes_for(:upload).merge(track_id: track.id)
+  end
 
   context 'logged out' do
     describe 'GET index' do

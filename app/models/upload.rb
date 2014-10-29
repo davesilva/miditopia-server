@@ -5,4 +5,6 @@ class Upload < ActiveRecord::Base
   belongs_to :user
 
   validates :midi_file, presence: true
+  validates :user_id, presence: true
+  validates :track_id, presence: true
 end

@@ -21,6 +21,9 @@ gem 'oj'
 # Secure passwords
 gem 'bcrypt'
 
+# Uploads
+gem 'carrierwave'
+
 # Testing
 group :test, :development do
   gem 'factory_girl_rails'

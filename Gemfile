@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.1.1'
 
 # Rails
 gem 'rails', '4.2.0.beta2'
@@ -50,3 +51,6 @@ group :development do
   gem 'guard-rspec'
   gem 'guard-bundler'
 end
+
+# For Heroku
+gem 'rails_12factor', group: :production

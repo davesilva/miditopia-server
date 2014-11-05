@@ -25,7 +25,7 @@ class V1::TracksController < V1::BaseController
   private
 
   def track_params
-    params.require(:track).permit(:title, :artist)
+    params.permit(:title, :artist)
   end
 
   def set_track

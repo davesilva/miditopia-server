@@ -25,7 +25,7 @@ describe V1::TracksController do
     it_behaves_like 'index and show'
 
     describe 'POST create' do
-      before { post :create, track: valid_attributes, format: :json }
+      before { post :create, valid_attributes.merge(format: :json) }
 
       it { should respond_with(:unauthorized) }
     end
@@ -38,14 +38,14 @@ describe V1::TracksController do
 
     describe 'POST create' do
       context 'with valid attributes' do
-        before { post :create, track: valid_attributes, format: :json }
+        before { post :create, valid_attributes.merge(format: :json) }
 
         it { should respond_with(:success) }
         it { should render_template('tracks/create') }
       end
 
       context 'with invalid attributes' do
-        before { post :create, track: valid_attributes.except(:title), format: :json }
+        before { post :create, valid_attributes.except(:title).merge(format: :json) }
 
         it { should respond_with(:unprocessable_entity) }
 
@@ -59,7 +59,7 @@ describe V1::TracksController do
       let(:track) { FactoryGirl.create(:track) }
 
       before do
-        put :update, id: track.id, track: { title: 'New Title' }, format: :json
+        put :update, id: track.id, title: 'New Title', format: :json
       end
 
       it { should respond_with(:unauthorized) }

@@ -12,6 +12,9 @@ gem 'pg'
 # Unicorn app server
 gem 'unicorn'
 
+# CORS
+gem 'rack-cors', require: 'rack/cors'
+
 # API versioning
 gem 'versionist'
 

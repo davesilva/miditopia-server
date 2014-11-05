@@ -10,25 +10,25 @@ describe V1::UploadsController do
 
   shared_examples_for 'index and show' do
     describe 'GET index' do
-      before { get :index, format: :json }
+      before { get :index }
 
       it { should respond_with(:success) }
       it { should render_template('uploads/index') }
     end
 
     describe 'GET show' do
-      before { get :show, id: upload.id, format: :json }
+      before { get :show, id: upload.id }
 
       it { should respond_with(:success) }
       it { should render_template('uploads/show') }
-    end    
+    end
   end
 
   context 'logged out' do
     it_behaves_like 'index and show'
 
     describe 'POST create' do
-      before { post :create, valid_attributes.merge(format: :json) }
+      before { post :create, valid_attributes }
 
       it { should respond_with(:unauthorized) }
     end
@@ -57,8 +57,7 @@ describe V1::UploadsController do
 
       context 'with invalid attributes' do
         before do
-          post :create, midi_file: "I'm not a midi file",
-                        format: :json
+          post :create, midi_file: "I'm not a midi file"
         end
 
         it { should respond_with(:unprocessable_entity) }

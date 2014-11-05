@@ -5,7 +5,7 @@ describe V1::UsersController do
 
   describe 'POST create' do
     context 'with valid attributes' do
-      before { post :create, valid_attributes.merge(format: :json) }
+      before { post :create, valid_attributes }
 
       it { should respond_with(:success) }
       it { should render_template 'create' }
@@ -13,7 +13,7 @@ describe V1::UsersController do
 
     context 'with invalid attributes' do
       before { post :create,
-                    valid_attributes.except(:username).merge(format: :json) }
+                    valid_attributes.except(:username) }
 
       it { should respond_with(:unprocessable_entity) }
 
@@ -30,7 +30,7 @@ describe V1::UsersController do
     context 'PUT update' do
       context 'with valid attributes' do
         before do
-          put :update, id: user.id, name: 'New Name', format: :json
+          put :update, id: user.id, name: 'New Name'
         end
 
         it { should respond_with(:no_content) }
@@ -38,7 +38,7 @@ describe V1::UsersController do
 
       context 'with invalid attributes' do
         before do
-          put :update, id: user.id, password: '123', format: :json
+          put :update, id: user.id, password: '123'
         end
 
         it { should respond_with(:unprocessable_entity) }
@@ -53,8 +53,7 @@ describe V1::UsersController do
 
         before do
           put :update, id: unauthorized.id,
-                       name: 'New Name',
-                       format: :json
+                       name: 'New Name'
         end
 
         it { should respond_with(:unauthorized) }
@@ -63,14 +62,14 @@ describe V1::UsersController do
 
     context 'GET show' do
       context 'with an authorized user' do
-        before { get :show, id: user.id, format: :json }
+        before { get :show, id: user.id }
 
         it { should respond_with(:ok) }
       end
 
       context 'with an unauthorized user' do
         let(:unauthorized) { FactoryGirl.create(:user) }
-        before { get :show, id: unauthorized.id, format: :json }
+        before { get :show, id: unauthorized.id }
 
         it { should respond_with(:unauthorized) }
       end

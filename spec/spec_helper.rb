@@ -46,6 +46,12 @@ RSpec.configure do |config|
 
   config.include AuthHelper, type: :controller
 
+  # All controller specs should accept JSON
+  config.before(:each, type: :controller) do
+    @request.env['HTTP_ACCEPT'] = 'application/json'
+    @request.env['CONTENT_TYPE'] = 'application/json'
+  end
+
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin

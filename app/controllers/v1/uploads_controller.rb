@@ -29,7 +29,7 @@ class V1::UploadsController < V1::BaseController
   private
 
   def upload_params
-    params.require(:upload).permit(:midi_file, :track_id)
+    params.permit(:midi_file, :track_id)
   end
 
   def set_upload

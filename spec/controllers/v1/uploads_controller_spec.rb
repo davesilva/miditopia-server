@@ -28,7 +28,7 @@ describe V1::UploadsController do
     it_behaves_like 'index and show'
 
     describe 'POST create' do
-      before { post :create, upload: valid_attributes, format: :json }
+      before { post :create, valid_attributes.merge(format: :json) }
 
       it { should respond_with(:unauthorized) }
     end
@@ -41,7 +41,7 @@ describe V1::UploadsController do
 
     describe 'POST create' do
       context 'with valid attributes' do
-        before { post :create, upload: valid_attributes, format: :json }
+        before { post :create, valid_attributes.merge(format: :json) }
 
         it { should respond_with(:success) }
         it { should render_template('uploads/create') }
@@ -57,7 +57,7 @@ describe V1::UploadsController do
 
       context 'with invalid attributes' do
         before do
-          post :create, upload: { midi_file: "I'm not a midi file" },
+          post :create, midi_file: "I'm not a midi file",
                         format: :json
         end
 

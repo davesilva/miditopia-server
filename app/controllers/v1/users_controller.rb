@@ -18,7 +18,7 @@ class V1::UsersController < V1::BaseController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    params.permit(:username, :email, :password)
   end
 
   def set_user

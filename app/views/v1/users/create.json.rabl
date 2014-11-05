@@ -1,2 +1,2 @@
 object @user
-extends 'users/base'
+extends 'v1/users/base'

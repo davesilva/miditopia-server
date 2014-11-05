@@ -5,7 +5,7 @@ describe V1::UsersController do
 
   describe 'POST create' do
     context 'with valid attributes' do
-      before { post :create, user: valid_attributes, format: :json }
+      before { post :create, valid_attributes.merge(format: :json) }
 
       it { should respond_with(:success) }
       it { should render_template 'create' }
@@ -13,8 +13,7 @@ describe V1::UsersController do
 
     context 'with invalid attributes' do
       before { post :create,
-                    user: valid_attributes.except(:username),
-                    format: :json }
+                    valid_attributes.except(:username).merge(format: :json) }
 
       it { should respond_with(:unprocessable_entity) }
 
@@ -31,7 +30,7 @@ describe V1::UsersController do
     context 'PUT update' do
       context 'with valid attributes' do
         before do
-          put :update, id: user.id, user: { name: 'New Name' }, format: :json
+          put :update, id: user.id, name: 'New Name', format: :json
         end
 
         it { should respond_with(:no_content) }
@@ -39,7 +38,7 @@ describe V1::UsersController do
 
       context 'with invalid attributes' do
         before do
-          put :update, id: user.id, user: { password: '123' }, format: :json
+          put :update, id: user.id, password: '123', format: :json
         end
 
         it { should respond_with(:unprocessable_entity) }
@@ -54,7 +53,7 @@ describe V1::UsersController do
 
         before do
           put :update, id: unauthorized.id,
-                       user: { name: 'New Name' },
+                       name: 'New Name',
                        format: :json
         end
 

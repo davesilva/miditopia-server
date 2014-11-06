@@ -20,7 +20,7 @@ class V1::UploadsController < V1::BaseController
   def destroy
     if @upload.user_id == current_user.id
       @upload.destroy
-      head :ok
+      head :no_content
     else
       head :unauthorized
     end

@@ -1,2 +1,2 @@
 collection @uploads
-extends 'uploads/base'
+extends 'v1/uploads/base'

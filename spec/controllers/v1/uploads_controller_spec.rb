@@ -68,7 +68,7 @@ describe V1::UploadsController do
       context 'with an authorized user' do
         before { delete :destroy, id: upload.id }
 
-        it { should respond_with(:success) }
+        it { should respond_with(:no_content) }
 
         it 'destroys the upload' do
           expect(Upload.count).to eq 0

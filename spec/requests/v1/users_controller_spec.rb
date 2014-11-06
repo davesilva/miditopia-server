@@ -22,8 +22,6 @@ describe V1::UsersController do
   context do
     let(:user) { FactoryGirl.create(:user) }
     let(:id) { user.id }
-    let(:username) { user.username }
-    let(:password) { user.password }
 
     describe 'GET /users/:id' do
       it 'gets a user if the credentials match' do

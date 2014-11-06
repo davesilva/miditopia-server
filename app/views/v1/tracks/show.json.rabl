@@ -1,2 +1,2 @@
 object @track
-extends 'tracks/base'
+extends 'v1/tracks/base'

@@ -45,6 +45,7 @@ RSpec.configure do |config|
   end
 
   config.include AuthHelper, type: :controller
+  config.include AuthRequestHelper, type: :request
 
   # All controller specs should accept JSON
   config.before(:each, type: :controller) do

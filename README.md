@@ -1,6 +1,8 @@
 MIDItopia
 ==========
 
+[![Build Status](https://travis-ci.org/davesilva/miditopia-server.svg)](https://travis-ci.org/davesilva/miditopia-server)
+
 Ever wonder why there's not a social network dedicated entirely to
 sharing MIDI files with your friends? Wonder no more!  Miditopia is
 the hot new social sharing site where you and your friends can share

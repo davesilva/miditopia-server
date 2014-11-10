@@ -27,6 +27,7 @@ gem 'bcrypt'
 
 # Uploads
 gem 'carrierwave'
+gem 'fog'
 
 # Testing
 group :test, :development do

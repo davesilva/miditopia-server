@@ -24,6 +24,8 @@ module MiditopiaApi
     config.active_record.raise_in_transactional_callbacks = true
     config.autoload_paths += %W(#{config.root}/app/uploaders)
 
+    config.active_job.queue_adapter = :delayed_job
+
     # Configure Rack::Cors
     config.middleware.insert_before "ActionDispatch::Static", "Rack::Cors" do
       allow do

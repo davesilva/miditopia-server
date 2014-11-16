@@ -29,6 +29,9 @@ gem 'bcrypt'
 gem 'carrierwave'
 gem 'fog'
 
+# Background jobs
+gem 'delayed_job_active_record'
+
 # Testing
 group :test, :development do
   gem 'factory_girl_rails'
@@ -54,6 +57,7 @@ group :development do
   gem 'guard-rails'
   gem 'guard-rspec'
   gem 'guard-bundler'
+  gem 'guard-delayed'
 end
 
 # For Heroku

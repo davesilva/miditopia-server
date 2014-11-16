@@ -47,6 +47,12 @@ GEM
     celluloid (0.16.0)
       timers (~> 4.0.0)
     coderay (1.1.0)
+    daemons (1.1.9)
+    delayed_job (4.0.4)
+      activesupport (>= 3.0, < 4.2)
+    delayed_job_active_record (4.0.2)
+      activerecord (>= 3.0, < 4.2)
+      delayed_job (>= 3.0, < 4.1)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     excon (0.33.0)
@@ -86,6 +92,10 @@ GEM
     guard-bundler (2.0.0)
       bundler (~> 1.0)
       guard (~> 2.2)
+    guard-delayed (0.2.1)
+      daemons
+      delayed_job
+      guard (> 0.3)
     guard-rails (0.6.0)
       guard (~> 2.0)
     guard-rspec (4.3.1)
@@ -233,11 +243,13 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   carrierwave
+  delayed_job_active_record
   factory_girl_rails
   fog
   growl
   guard
   guard-bundler
+  guard-delayed
   guard-rails
   guard-rspec
   libnotify
